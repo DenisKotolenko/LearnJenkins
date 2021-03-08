@@ -1,0 +1,7 @@
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\LearnJenkins.exe
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\appsettings.Development.json
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\appsettings.json
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\LearnJenkins.dll
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\LearnJenkins.deps.json
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\LearnJenkins.runtimeconfig.json
+U:\LearnJenkins\LearnJenkins\bin\Release\net5.0\publish\LearnJenkins.pdb
