@@ -3,7 +3,7 @@ node {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
     stage('build and publish') {
-        sh(script: "dotnet publish LearnJenkins.csproj -c Release ", returnStdout: true)
+        sh(script: "dotnet publish .\LearnJenkins.csproj -c Release ", returnStdout: true)
     }
 
     // stage('deploy') {
