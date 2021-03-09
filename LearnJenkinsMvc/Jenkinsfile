@@ -2,8 +2,8 @@ node {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
-    stage('build and publish') {
-        sh(script: "dotnet publish LearnJenkins.csproj -c Release ", returnStdout: true)
+    stage('Build and publish') {
+        sh(script: "dotnet publish LearnJenkinsMvc.csproj -c Release", returnStdout: true)
     }
 
     // stage('deploy') {
