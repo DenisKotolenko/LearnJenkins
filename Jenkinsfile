@@ -12,7 +12,7 @@ node {
 	echo 'created image'
     }
 	
-    stage ('Publish docker image to GKE') {
+    stage ('Deploy HELM to Kubernetes') {
 	echo 'TODO'
 	echo 'published to GKE'
     }
