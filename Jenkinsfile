@@ -1,5 +1,5 @@
 podTemplate(containers: [
-   containerTemplate(name: 'dotnet-sdk', image: 'mcr.microsoft.com/dotnet/sdk:5.0', ttyEnabled: true, command: 'cat')
+    containerTemplate(name: 'dotnet-sdk', image: 'microsoft/dotnet:2.2-sdk', ttyEnabled: true, command: 'cat'),
   ]) 
 node {
     stage('Checkout git repo') {
