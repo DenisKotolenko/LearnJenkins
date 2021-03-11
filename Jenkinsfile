@@ -1,3 +1,6 @@
+podTemplate(containers: [
+   containerTemplate(name: 'dotnet-sdk', image: 'mcr.microsoft.com/dotnet/sdk:5.0', ttyEnabled: true, command: 'cat')
+  ]) 
 node {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
