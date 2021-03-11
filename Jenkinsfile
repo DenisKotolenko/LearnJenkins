@@ -1,6 +1,7 @@
 podTemplate(containers: [
     containerTemplate(name: 'dotnet-sdk', image: 'microsoft/dotnet:2.2-sdk', ttyEnabled: true, command: 'cat'),
-  ]) 
+]) 
+{ 
 node {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
@@ -20,4 +21,6 @@ node {
 	echo 'TODO'
 	echo 'published to GKE'
     }
+}
+	
 }
