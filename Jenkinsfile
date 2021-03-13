@@ -2,7 +2,7 @@ podTemplate(containers: [
   containerTemplate(name: 'dotnetbuilder', image: 'mcr.microsoft.com/dotnet/aspnet', command: 'cat', ttyEnabled: true)
  
 ]) {
-  node(POD_NODE) {
+  node(POD_LABEL) {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
