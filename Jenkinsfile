@@ -1,17 +1,28 @@
-pipeline {
-	
-agent {
-        docker { image 'microsoft/aspnetcore-build' }
-    }
-stages {
+def label = "worker-${UUID.randomUUID().toString()}"
+
+podTemplate(label: label, containers: [
+  containerTemplate(name: 'dotnetbuilder', image: 'mcr.microsoft.com/dotnet/aspnet', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.8.8', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
+],
+volumes: [
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
+]) {
+  node(label) {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
-	
-    stage ('Build') {
-	sh(script: 'dotnet --version', returnStdout: true);
+	  
+stage('Dotnet build') {
+
+        container('dotnetbuilder') {
+          sh(script: 'dotnet --version', returnStdout: true);
+        }
+      
     }
 	
+
     stage ('Create docker image') {
 	echo 'TODO'
 	echo 'created image'
