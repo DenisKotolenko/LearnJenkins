@@ -3,8 +3,7 @@ pipeline {
 agent {
         docker { image 'microsoft/aspnetcore-build' }
     }
-{ 
-node {
+stages {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
