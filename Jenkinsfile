@@ -1,6 +1,8 @@
-podTemplate(containers: [
-    containerTemplate(name: 'dotnet-sdk', image: 'microsoft/dotnet:2.2-sdk', ttyEnabled: true, command: 'cat'),
-]) 
+pipeline {
+	
+agent {
+        docker { image 'microsoft/aspnetcore-build' }
+    }
 { 
 node {
     stage('Checkout git repo') {
@@ -9,7 +11,7 @@ node {
     }
 	
     stage ('Build') {
-	sh(script: 'dotnet build LearnJenkins.csproj', returnStdout: true);
+	sh(script: 'dotnet --version', returnStdout: true);
     }
 	
     stage ('Create docker image') {
