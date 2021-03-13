@@ -1,5 +1,5 @@
 podTemplate(containers: [
-  containerTemplate(name: 'dotnetbuilder', image: 'mcr.microsoft.com/dotnet/core/sdk', command: 'cat', ttyEnabled: true)
+    containerTemplate(name: 'golang', image: 'golang:1.8.0', ttyEnabled: true, command: 'cat')
  
 ]) {
   node(POD_LABEL) {
@@ -7,13 +7,18 @@ podTemplate(containers: [
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
 	  
-stage('Dotnet build') {
-
-        container('dotnetbuilder') {
-          sh(script: 'dotnet --version', returnStdout: true);
+    stage('Get a Golang project') {
+            git url: 'https://github.com/hashicorp/terraform.git'
+            container('golang') {
+                stage('Build a Go project') {
+                    sh """
+                    mkdir -p /go/src/github.com/hashicorp
+                    ln -s `pwd` /go/src/github.com/hashicorp/terraform
+                    cd /go/src/github.com/hashicorp/terraform && make core-dev
+                    """
+                }
+            }
         }
-  
-    }
 	
 
     stage ('Create docker image') {
