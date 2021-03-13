@@ -7,7 +7,6 @@ agent {
 node {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
-      sleep(60)
     }
 	
     stage ('Build') {
