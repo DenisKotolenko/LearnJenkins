@@ -8,10 +8,6 @@ podTemplate(label: podLabel, containers: [
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
 	  
-	stage('Build docker image')
-	  stage('push docker image on repo')
-	  stage('deploy docker image on kube')
-	  
 stage('Get a Golang project') {
             git url: 'https://github.com/hashicorp/terraform.git'
             container('golang') {
