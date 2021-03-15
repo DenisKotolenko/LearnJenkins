@@ -1,7 +1,9 @@
-podTemplate(containers: [
+def podLabel = "buildpod_" + "${env.JOB_NAME}.${env.BUILD_NUMBER}".replaceAll('[^A-Za-z0-9]', '_').reverse().take(54).reverse()
+
+podTemplate(label: podLabel, containers: [
     containerTemplate(name: 'golang', image: 'golang:1.8.0', ttyEnabled: true, command: 'cat', privileged: true) 
 ]) {
-  node(POD_LABEL) {
+  node(podLabel) {
     stage('Checkout git repo') {
       git branch: 'main', url: 'https://github.com/DenisKotolenko/LearnJenkins.git'
     }
