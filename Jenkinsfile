@@ -1,5 +1,5 @@
-podTemplate(label: POD_LABEL, containers: [
-    containerTemplate(name: 'golang', image: 'golang:1.8.0', ttyEnabled: true, command: 'cat') 
+podTemplate(containers: [
+    containerTemplate(name: 'golang', image: 'golang:1.8.0', ttyEnabled: true, command: 'cat', privileged: true) 
 ]) {
   node(POD_LABEL) {
     stage('Checkout git repo') {
